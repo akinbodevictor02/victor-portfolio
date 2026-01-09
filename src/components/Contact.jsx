@@ -24,16 +24,15 @@ const Contact = () => {
     { icon: <FaEnvelope />, label: "Email", url: "mailto:oluwaseyiv47@gmail.com" }
   ];
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-    setSending(true);
+const sendEmail = (e) => {
+  e.preventDefault();
+  setSending(true);
 
-    emailjs.sendForm(
-      "service_1j2b7yx",         // Service ID
-      "template_5b1rxbe",        // Template ID
-      formRef.current,           // Form ref
-      "sRFuC-hxJzpTLg7Sf"       // Public Key
-    )
+  const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+  emailjs.sendForm(serviceID, templateID, formRef.current, publicKey)
     .then(() => {
       setSending(false);
       setSuccess(true);
@@ -43,7 +42,7 @@ const Contact = () => {
       setSending(false);
       setSuccess(false);
     });
-  };
+};
 
   return (
     <section
