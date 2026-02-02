@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ThemeContext } from "../ThemeContext.jsx";
 import { FiSun, FiMoon } from "react-icons/fi";
 
@@ -7,6 +7,7 @@ const navItems = ["Home", "About", "Projects", "Contact"];
 
 const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const [open, setOpen] = useState(false);
 
   return (
     <motion.nav
@@ -77,6 +78,25 @@ const Navbar = () => {
           ))}
         </div>
 
+        {/* Hamburger (mobile) - CSS shows it on small screens */}
+        <button
+          className="nav-hamburger"
+          onClick={() => setOpen((s) => !s)}
+          aria-label="Toggle navigation"
+          style={{
+            border: "none",
+            background: "transparent",
+            cursor: "pointer",
+            padding: 6,
+            marginLeft: 6,
+            color: theme === "dark" ? "#fff" : "#111",
+          }}
+        >
+          <span style={{ display: "block", width: 18, height: 2, background: "currentColor", marginBottom: 4 }} />
+          <span style={{ display: "block", width: 18, height: 2, background: "currentColor", marginBottom: 4 }} />
+          <span style={{ display: "block", width: 18, height: 2, background: "currentColor" }} />
+        </button>
+
         {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
@@ -95,6 +115,16 @@ const Navbar = () => {
         >
           {theme === "dark" ? <FiSun /> : <FiMoon />}
         </button>
+        {/* Mobile dropdown menu (only renders when open). Inline styles keep desktop layout unchanged. */}
+        {open && (
+          <div className="mobile-menu" style={{ position: "absolute", top: "calc(100% + 0.5rem)", right: 8, width: "220px", padding: "0.5rem", borderRadius: 12, background: theme === "dark" ? "rgba(15,15,15,0.95)" : "rgba(255,255,255,0.95)", boxShadow: "0 10px 30px rgba(0,0,0,0.12)" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
+              {navItems.map((item) => (
+                <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setOpen(false)} style={{ padding: "0.5rem", borderRadius: 8, textDecoration: "none", color: theme === "dark" ? "#fff" : "#111" }}>{item}</a>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </motion.nav>
   );

@@ -39,12 +39,10 @@ const Hero = () => {
       </div>
 
       {/* Social icons */}
-      <div
+      <div className="hero-social"
         style={{
           position: "absolute",
           bottom: "2.5rem",
-          left: "6rem",
-          transform: "none",
           display: "flex",
           gap: "1.5rem",
           zIndex: 3,
@@ -72,8 +70,8 @@ const Hero = () => {
             whileHover={{ scale: 1.15 }}
             whileTap={{ scale: 0.95 }}
             style={{
-              width: "42px",
-              height: "42px",
+              width: "clamp(36px, 6vw, 42px)",
+              height: "clamp(36px, 6vw, 42px)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -89,12 +87,12 @@ const Hero = () => {
                   ? "1px solid rgba(255,255,255,0.15)"
                   : "1px solid rgba(0,0,0,0.15)",
               backdropFilter: "blur(6px)",
-              fontSize: "1rem",
+              fontSize: "clamp(0.9rem, 2.5vw, 1rem)",
               transition: "all 0.3s ease",
             }}
           >
-            {item.icon}
-          </motion.a>
+              {item.icon}
+            </motion.a>
         ))}
       </div>
 

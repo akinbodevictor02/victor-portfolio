@@ -50,6 +50,7 @@ const Projects = () => {
       {floatingShapes.map((shape, idx) => (
         <motion.div
           key={idx}
+          className="floating-shape"
           style={{
             width: shape.size,
             height: shape.size,
@@ -91,7 +92,7 @@ const Projects = () => {
       </div>
 
       {/* Project Cards */}
-      <div
+      <div className="projects-grid"
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(2, 1fr)",
@@ -119,7 +120,7 @@ const Projects = () => {
             }}
           >
             {/* Image */}
-            <div style={{ height: "240px", overflow: "hidden" }}>
+            <div style={{ aspectRatio: "16/9", width: "100%", overflow: "hidden" }}>
               <img
                 src={project.image}
                 alt={project.title}

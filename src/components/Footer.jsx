@@ -39,7 +39,7 @@ const Footer = () => {
                                             fontSize: "0.9rem",
                                             lineHeight: "1.7",
                                             color: theme === "dark" ? "#aaa" : "#555",
-                                            maxWidth: "320px",
+                                            maxWidth: "min(320px, 90%)",
                                         }}
                                         >
                                             React developer and UI focused frontend engineer, building clean, scalable, and performance-optimized web experiences.

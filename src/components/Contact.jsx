@@ -62,6 +62,7 @@ const sendEmail = (e) => {
       {floatingShapes.map((shape, i) => (
         <motion.div
           key={i}
+          className="floating-shape"
           animate={{ y: [0, -20, 0], x: [0, 10, 0], rotate: [0, 180, 0] }}
           transition={{
             duration: 6 + Math.random() * 4,
@@ -104,7 +105,7 @@ const sendEmail = (e) => {
       </div>
 
       {/* Main Content */}
-      <div
+      <div className="contact-grid"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1.4fr",
@@ -124,8 +125,8 @@ const sendEmail = (e) => {
               src="/profile.jpg"
               alt="Victor Akinbode"
               style={{
-                width: "60px",
-                height: "60px",
+                width: "clamp(48px, 10vw, 60px)",
+                height: "clamp(48px, 10vw, 60px)",
                 borderRadius: "50%",
                 objectFit: "cover",
                 border: "2px solid rgba(255,255,255,0.2)"
@@ -151,7 +152,7 @@ const sendEmail = (e) => {
             style={{
               marginTop: "2rem",
               color: theme === "dark" ? "#aaa" : "#555",
-              maxWidth: "300px",
+              maxWidth: "min(300px, 80vw)",
               lineHeight: "1.7"
             }}
           >
@@ -217,14 +218,14 @@ const sendEmail = (e) => {
         >
           <h3 style={{ marginBottom: "1.5rem" }}>Send me a message</h3>
 
-          <div
+          <div className="form-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
               gap: "1rem",
               marginBottom: "1rem"
             }}
-          >
+            >
             <input name="name" placeholder="Name" style={inputStyle(theme)} required />
             <input name="surname" placeholder="Surname" style={inputStyle(theme)} />
           </div>

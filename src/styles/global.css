@@ -84,3 +84,58 @@ button:hover {
 a {
     text-decoration: none;
 }
+
+/* Responsive helpers added to central stylesheet */
+img, picture, svg, video, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Navbar inner adjustments for small screens */
+.nav-inner {
+    transition: padding 0.2s, gap 0.2s;
+}
+@media (max-width: 600px) {
+    .nav-inner {
+        gap: 0.6rem;
+        padding: 0.5rem 0.8rem;
+    }
+    .nav-inner span { font-size: 0.95rem }
+}
+
+/* Hero social icons responsive placement */
+.hero-social { left: 1.5rem; }
+@media (min-width: 900px) { .hero-social { left: 6rem; } }
+
+/* Projects grid and contact/grid form responsiveness */
+.projects-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 768px) { .projects-grid { grid-template-columns: 1fr; } }
+
+.contact-grid { grid-template-columns: 1fr 1.4fr; }
+@media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+
+.form-grid { grid-template-columns: 1fr 1fr; }
+@media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+
+/* Prevent accidental horizontal overflow */
+html, body { overflow-x: hidden; }
+
+/* Navbar responsive: show hamburger and hide desktop links on small screens */
+.nav-hamburger { display: none; }
+.nav-links { display: flex; }
+@media (max-width: 768px) {
+    .nav-links { display: none !important; }
+    .nav-hamburger { display: block !important; }
+    /* keep layout visually identical by positioning hamburger on the right inside nav-inner */
+    .nav-hamburger { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); }
+}
+
+/* Mobile menu basic styles (desktop menu toggled via inline styles) */
+.mobile-menu a:hover { opacity: 0.9; }
+
+/* Floating decorative shapes: hide on small screens to avoid overlap */
+.floating-shape { pointer-events: none; }
+@media (max-width: 600px) {
+    .floating-shape { display: none; }
+}

@@ -35,6 +35,7 @@ const About = () => {
       {floatingShapes.map((shape, idx) => (
         <motion.div
           key={idx}
+          className="floating-shape"
           style={{
             width: shape.size,
             height: shape.size,
@@ -58,8 +59,8 @@ const About = () => {
 
        <div
         style={{
-          width: "200%",
-          maxWidth: "1100px",
+          width: "100%",
+          maxWidth: "min(1100px, 95%)",
           display: "flex",
           alignItems: "center",
           gap: "1.5rem",
@@ -70,8 +71,7 @@ const About = () => {
         <h2
           style={{
             fontSize: "2.5rem",
-            fontWeight: 600,
-            whiteSpace: "nowrap"
+            fontWeight: 600
           }}
         >
           About
@@ -105,8 +105,8 @@ const About = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
         style={{
-          width: "150px",
-          height: "150px",
+          width: "clamp(90px, 18vw, 150px)",
+          height: "clamp(90px, 18vw, 150px)",
           borderRadius: "50%",
           objectFit: "cover",
           border: `3px solid ${theme === "dark" ? "#fff" : "#111"}`,
@@ -138,7 +138,7 @@ const About = () => {
         viewport={{ once: true }}
         transition={{ delay: 0.3, duration: 0.8 }}
         style={{
-          maxWidth: "700px",
+          maxWidth: "min(700px, 95%)",
           lineHeight: "1.8",
           marginBottom: "2rem",
           color: theme === "dark" ? "#ccc" : "#333",
@@ -174,7 +174,7 @@ const About = () => {
               border: `1px solid ${theme === "dark" ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"}`,
               background: theme === "dark" ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)",
               color: theme === "dark" ? "#fff" : "#111",
-              minWidth: "120px",
+              minWidth: "min(120px, 30vw)",
               textAlign: "center",
               transition: "transform 0.3s",
               cursor: "default"

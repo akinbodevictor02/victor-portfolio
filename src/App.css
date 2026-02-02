@@ -1,8 +1,23 @@
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  #root {
+    padding: 0.75rem;
+    text-align: left;
+  }
 }
 
 .logo {
@@ -11,32 +26,91 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
+@media (max-width: 768px) {
+  .logo {
+    height: 4em;
+    padding: 0.75em;
+  }
+}
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
 }
 
 .card {
   padding: 2em;
 }
 
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+  }
+}
+
 .read-the-docs {
   color: #888;
 }
+
+/* Make images and media scale */
+img, picture, svg, video, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Ensure body flow doesn't force horizontal centering which breaks sections on small screens */
+body {
+  display: block;
+}
+
+/* Navbar inner container adjustments */
+.nav-inner {
+  transition: padding 0.2s, gap 0.2s;
+}
+@media (max-width: 600px) {
+  .nav-inner {
+    gap: 0.75rem;
+    padding: 0.6rem 0.9rem;
+  }
+  .nav-inner span { font-size: 0.95rem }
+}
+
+/* Hero social icons: small offset on mobile, larger on desktop */
+.hero-social {
+  left: 1.5rem;
+}
+@media (min-width: 900px) {
+  .hero-social { left: 6rem; }
+}
+
+/* Projects grid: switch to single column on small screens */
+.projects-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (max-width: 768px) {
+  .projects-grid { grid-template-columns: 1fr; }
+}
+
+/* Contact layout responsiveness */
+.contact-grid {
+  grid-template-columns: 1fr 1.4fr;
+}
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+.form-grid {
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 600px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
+
+/* Small helpers */
+.card { width: 100%; }
+
